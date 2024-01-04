@@ -39,7 +39,7 @@
     "prettier": "0.22.0",
     "typescript": "3.8.1",
     "cross-env": "7.0.3",
-    "husky": "3.2.3",
+    "husky": "8.0.3",
     "nodemon": "2.0.22",
     "pretty-quick": "^2.0.0"
 
