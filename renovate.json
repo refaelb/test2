@@ -4,10 +4,10 @@
   "baseBranches": ["main"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["major", "minor", "patch"],
 
-      "automerge": true,      
-      "dependencyDashboardApproval": false
+
+      "automerge": true
+
     }
   ]
 }
