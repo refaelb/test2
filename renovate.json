@@ -4,10 +4,9 @@
   "baseBranches": ["main"],
   "packageRules": [
     {
-
-
-      "automerge": true
-
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "automerge": true,      
+      "automergeType": "pr"
     }
   ]
 }
