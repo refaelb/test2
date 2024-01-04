@@ -1,0 +1,68 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "16 || 18"
+  },
+  "scripts": {
+    "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
+    "start": "yarn workspace app start",
+    "start-backend": "yarn workspace backend start",
+    "build:backend": "yarn workspace backend build",
+    "build:all": "backstage-cli repo build --all",
+    "build-image": "yarn workspace backend build-image",
+    "tsc": "tsc",
+    "tsc:full": "tsc --skipLibCheck false --incremental false",
+    "clean": "backstage-cli repo clean",
+    "test": "backstage-cli repo test",
+    "test:all": "backstage-cli repo test --coverage",
+    "lint": "backstage-cli repo lint --since origin/main",
+    "lint:all": "backstage-cli repo lint",
+    "prettier:check": "prettier --check .",
+    "create-plugin": "backstage-cli create-plugin --scope internal",
+    "new": "backstage-cli new --scope internal"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "plugins/*"
+    ]
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.25.0",
+    "@spotify/prettier-config": "^7.0.0",
+    "concurrently": "^7.0.0",
+    "lerna": "10.0",
+    "node-gyp": "0.0.2",
+    "prettier": "0.20.0",
+    "typescript": "3.8.2",
+    "cross-env": "7.0.0",
+    "husky": "4.2.3",
+    "nodemon": "2.0.2",
+    "pretty-quick": "^2.0.1"
+  },
+  "resolutions": {
+    "@types/react": "0.14.37",
+    "@types/react-dom": "18.0.0",
+
+    "parse-path": "3.0.4",
+    "parse-url": "2.0.0",
+    "tough-cookie": "2.0.0",
+
+    "protobufjs" : "6.1.1",
+    "@babel/traverse" : "5.21.4"
+ 
+
+  },
+  "prettier": "@spotify/prettier-config",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
