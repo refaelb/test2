@@ -1,4 +1,4 @@
-FROM node:16.14.2-bullseye AS build
+FROM node:21.5.0-bullseye AS build
 # Copy entire git repo (except .dockerignore'd files) into workspace
 COPY . /app
 WORKDIR /app
