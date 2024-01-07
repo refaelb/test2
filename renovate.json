@@ -5,26 +5,56 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "automerge": true,      
+      "matchManagers": ["npm"],
+      "automerge": true,
       "automergeType": "pr",
-      "groupName": "major dependencies",
-      "groupSlug": "major",
+      "groupName": "major npm dependencies",
+      "groupSlug": "npm-major",
       "matchPackagePatterns": ["*"]
     },
     {
       "matchUpdateTypes": ["minor"],
-      "automerge": true,      
+      "matchManagers": ["npm"],
+      "automerge": true,
       "automergeType": "pr",
-      "groupName": "minor dependencies",
-      "groupSlug": "minor",
+      "groupName": "minor npm dependencies",
+      "groupSlug": "npm-minor",
       "matchPackagePatterns": ["*"]
     },
     {
       "matchUpdateTypes": ["patch"],
-      "automerge": true,      
+      "matchManagers": ["npm"],
+      "automerge": true,
       "automergeType": "pr",
-      "groupName": "patch dependencies",
-      "groupSlug": "patch",
+      "groupName": "patch npm dependencies",
+      "groupSlug": "npm-patch",
+      "matchPackagePatterns": ["*"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "matchManagers": ["dockerfile"],
+      "automerge": true,
+      "automergeType": "pr",
+      "groupName": "major Dockerfile updates",
+      "groupSlug": "dockerfile-major",
+      "matchPackagePatterns": ["*"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "matchManagers": ["dockerfile"],
+      "automerge": true,
+      "automergeType": "pr",
+      "groupName": "minor Dockerfile updates",
+      "groupSlug": "dockerfile-minor",
+      "matchPackagePatterns": ["*"]
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "matchManagers": ["dockerfile"],
+      "automerge": true,
+      "automergeType": "pr",
+      "groupName": "patch Dockerfile updates",
+      "groupSlug": "dockerfile-patch",
       "matchPackagePatterns": ["*"]
     }
   ]
