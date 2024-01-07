@@ -34,9 +34,9 @@
     "@spotify/prettier-config": "^15.0.0",
     "concurrently": "^8.0.0",
 
-    "lerna": "^7.0.0",
-    "node-gyp": "9.0.1",
-    "prettier": "2.1.1",
+    "lerna": "^8.0.0",
+    "node-gyp": "10.0.1",
+    "prettier": "3.1.1",
     "typescript": "5.2.3",
     "cross-env": "7.0.2",
     "husky": "8.0.2",
@@ -52,7 +52,7 @@
     "parse-url": "9.0.1",
     "tough-cookie": "4.1.3",
 
-    "protobufjs" : "6.2.5",
+    "protobufjs" : "7.2.5",
     "@babel/traverse" : "5.20.4"
  
 
