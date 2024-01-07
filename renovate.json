@@ -4,15 +4,28 @@
   "baseBranches": ["main"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["major", "minor", "patch"],
+      "matchUpdateTypes": ["major"],
       "automerge": true,      
       "automergeType": "pr",
-      "groupName": "all dependencies",
-      "groupSlug": "all",
-      "matchPackagePatterns": [
-        "*"
-      ]
-
+      "groupName": "major dependencies",
+      "groupSlug": "major",
+      "matchPackagePatterns": ["*"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,      
+      "automergeType": "pr",
+      "groupName": "minor dependencies",
+      "groupSlug": "minor",
+      "matchPackagePatterns": ["*"]
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,      
+      "automergeType": "pr",
+      "groupName": "patch dependencies",
+      "groupSlug": "patch",
+      "matchPackagePatterns": ["*"]
     }
   ]
 }
