@@ -39,17 +39,17 @@
     "prettier": "2.1.1",
     "typescript": "4.2.3",
     "cross-env": "7.0.3",
-    "husky": "8.0.2",
+    "husky": "8.0.3",
     "nodemon": "3.0.2",
     "pretty-quick": "^2.0.0"
 
   },
   "resolutions": {
     "@types/react": "18.1.47",
-    "@types/react-dom": "18.2.17",
+    "@types/react-dom": "18.2.18",
 
     "parse-path": "7.0.0",
-    "parse-url": "9.0.0",
+    "parse-url": "9.0.1",
     "tough-cookie": "3.1.2",
 
     "protobufjs" : "6.1.5",
