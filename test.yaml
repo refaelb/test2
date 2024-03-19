@@ -50,27 +50,27 @@ grains:
         - lambda_function_name
         - lambda_arn
     tf-version: 1.3.6
-  apigw: null
-  kind: blueprint
-  depends-on: lambda
-  spec:
-    source:
-      store: backstage_templates
-      path: blueprints/apigw
-    agent:
-      name: leumi-agent
-      service-account: torque-s3-deployment-sa
-      kubernetes:
-        pod-labels:
-          - app: torque-runner
-    inputs:
-      - apigw_name: "{{ .inputs.apigw_name }}"
-      - account-id: '{{ .inputs.aws_env | split: "|" | last | strip }}'
-      - vpc_id: '{{ .inputs.aws_env_zone | split: "|" | last | strip }}'
-      - project_name: "{{ .inputs.projects }}"
-      - function_name: "{{ .inputs.function_name }}"
-      - lambda_function_name: "{{ .grains.lambda.outputs.lambda_function_name }}"
-      - lambda_arn: "{{ .grains.lambda.outputs.lambda_arn }}"
-    env-vars: []
-    outputs: []
-  tf-version: 1.3.6
+  apigw:
+    kind: blueprint
+    depends-on: lambda
+    spec:
+      source:
+        store: backstage_templates
+        path: blueprints/apigw
+      agent:
+        name: leumi-agent
+        service-account: torque-s3-deployment-sa
+        kubernetes:
+          pod-labels:
+            - app: torque-runner
+      inputs:
+        - apigw_name: "{{ .inputs.apigw_name }}"
+        - account-id: '{{ .inputs.aws_env | split: "|" | last | strip }}'
+        - vpc_id: '{{ .inputs.aws_env_zone | split: "|" | last | strip }}'
+        - project_name: "{{ .inputs.projects }}"
+        - function_name: "{{ .inputs.function_name }}"
+        - lambda_function_name: "{{ .grains.lambda.outputs.lambda_function_name }}"
+        - lambda_arn: "{{ .grains.lambda.outputs.lambda_arn }}"
+      env-vars: []
+      outputs: []
+    tf-version: 1.3.6
