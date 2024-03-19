@@ -1,3 +1,4 @@
 name: 
-  name_1: hi  name_2: ohihi     
+  - name_1: hi 
+  name_2: ohihi     
 
