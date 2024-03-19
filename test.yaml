@@ -1,4 +1,65 @@
-name: 
-  - name_1: hi 
-  name_2: ohihi     
+outputs: {} grains:
+  lambda:
+  kind: blueprint
+  spec:
+    source:
+      store: backstage_templates
+      path: blueprints/lambda
+    agent:
+    # The Torque agent that will be used to provision the environment.
+      name: leumi-agent
+      service-account: 'torque-s3-deployment-sa'
+      kubernetes:
+        pod-labels:
+        - app: torque-runner
+    # A service account annotated with a role ARN with permissions to run the asset
+    # service-account: <service-account-name>
+    inputs:
+    - function_name: '{{ .inputs.function_name }}'
+    - apigw_name: '{{ .inputs.apigw_name }}'
+    - account-id: '{{ .inputs.aws_env | split: "|" | last | strip }}'
+    - vpc_id: '{{ .inputs.aws_env_zone | split: "|" | last | strip }}'
+    - project_name: '{{ .inputs.projects }}'
+    # The environment variables declared in this section will be available during the grain deployment as well as the grain destroy phase
+    # env-vars:
+    # - VAR_NAME: var value
+    env-vars: []
+    outputs:
+      - lambda_function_name
+      - lambda_arn
+  # The terraform version that will be used to deploy the module
+  tf-version: 1.3.6
+apigw:
+  kind: blueprint
+  depends-on: lambda
+  spec:
+    source:
+      store: backstage_templates
+      path: blueprints/apigw
+    agent:
+    # The Torque agent that will be used to provision the environment.
+      name: leumi-agent
+      service-account: 'torque-s3-deployment-sa'
+      kubernetes:
+        pod-labels:
+        - app: torque-runner
+      # A service account annotated with a role ARN with permissions to run the asset
+      # service-account: <service-account-name>
+    inputs:
+    - apigw_name: '{{ .inputs.apigw_name }}'
+    - account-id: '{{ .inputs.aws_env | split: "|" | last | strip }}'
+    - vpc_id: '{{ .inputs.aws_env_zone | split: "|" | last | strip }}'
+    - project_name: '{{ .inputs.projects }}'
+    - function_name: '{{ .inputs.function_name }}'
+    - lambda_function_name: '{{ .grains.lambda.outputs.lambda_function_name }}'
+    - lambda_arn: '{{ .grains.lambda.outputs.lambda_arn }}'
+    # The environment variables declared in this section will be available during the grain deployment as well as the grain destroy phase
+    # env-vars:
+    # - VAR_NAME: var value
+    env-vars: []
+    outputs: []
+  # The terraform version that will be used to deploy the module
+  tf-version: 1.3.6
+  
+
 
