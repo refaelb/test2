@@ -1,7 +1,7 @@
-module "regular" {
-  source = "./modules/app"
+# module "regular" {
+#   source = "./modules/app"
 
-}
+# }
 
 # module "one_az" {
 #   source = "./modules/app"
@@ -82,7 +82,7 @@ module "complete" {
   compute_instances = {
     app1 = {
       az_number = 0
-      instance_type = "m7i.large"
+      instance_type = "t3.micro"
       tags = {
         special = "yes"
       }      
@@ -95,7 +95,7 @@ module "complete" {
   create_mysql = true
   database_config = {
     identifier = "mydb"
-    instance_class       = "db.t4g.2xlarge"
+    instance_class       = "db.r5.2xlarge"
     allocated_storage     = 500
     max_allocated_storage = 2000    
   }  

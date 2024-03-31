@@ -5,7 +5,7 @@ module "ec2_instance" {
   for_each = { for k, v in var.compute_instances : k => v if var.create_ec2 }
 
   name                   = try(each.value.name, each.key)
-  instance_type          = try(each.value.instance_type, "t2.micro")
+  instance_type          = try(each.value.instance_type, "t3.micro")
   key_name               = try(each.value.key_name, "")
   
   vpc_security_group_ids = [module.security_group.security_group_id]

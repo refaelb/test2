@@ -1,19 +1,21 @@
 
-# provider "aws" {
-#   region  = "us-east-1"
-#   profile = "infinit"
+provider "aws" {
+  region  = "il-central-1"
+}
 
-#   # assume_role {
-#   #   role_arn = "local.terraform_arn"
-#   # }
-# }
+
+
+
+
+
 
 provider "aws" {
-  region  = "us-east-1"
-  profile = "infinit"
+  assume_role {
+    role_arn = "arn:aws:iam::975050210799:role/terraform-full"
+    session_name = "TerraformSession"
+  }
+  region  = "il-central-1"
+  sts_region = "il-central-1"
+  alias = "il-central-1"
 }
-provider "aws" {
-  profile = "infinit"
-  region = "us-east-1"
-  alias = "us-east-1"
-}
+
